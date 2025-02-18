@@ -1,5 +1,7 @@
-
+"use client"
+import { useState } from "react";
 import NoteCard from "./components/note";
+import Search from "./components/search";
 
 export default function Home() {
 
@@ -12,14 +14,26 @@ export default function Home() {
     { id: 6, title: "Note 6", content: "This is the content of note 6", date:"25 December, 2024" },
   ]
   
+  const [sortedNotes, setSortedNotes] = useState(notes)
+  
+  function search(data) {
+    setSortedNotes(data)
+  }
+  function isCleared(data) {
+    data && setSortedNotes(notes)
+  }
   return (
-    <div className="flex flex-wrap">
-      
+    <div>
+      <Search isCleared={isCleared} onNotesSorted={search} displayedNotes={sortedNotes} />
+      <div className="flex flex-wrap">
       {
-        notes.map((note)=>(
+        sortedNotes.map((note)=>(
           <NoteCard note={note} key={note.id} />
         ))
       }
+
+      </div>
+      
     </div>
   );
 }
