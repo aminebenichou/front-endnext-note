@@ -16,15 +16,15 @@ export default function Home() {
   
   const [sortedNotes, setSortedNotes] = useState(notes)
   
-  function search(data) {
-    setSortedNotes(data)
-  }
-  function isCleared(data) {
-    data && setSortedNotes(notes)
-  }
+  // function search(data) {
+  //   setSortedNotes(data)
+  // }
+  // function isCleared(data) {
+  //   data && setSortedNotes(notes)
+  // }
   return (
     <div>
-      <Search isCleared={isCleared} onNotesSorted={search} displayedNotes={sortedNotes} />
+      {/* <Search isCleared={isCleared} onNotesSorted={search} displayedNotes={sortedNotes} /> */}
       <div className="flex flex-wrap">
       {
         sortedNotes.map((note)=>(
