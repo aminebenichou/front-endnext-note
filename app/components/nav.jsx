@@ -3,6 +3,7 @@ import React from 'react'
 import MenuButton from './MenuButton'
 import { ArchiveIcon, BellIcon, FilePenIcon, HeartIcon, TrashIcon } from 'lucide-react'
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 const NavMenu = () => {
     const pathname = usePathname();
     console.log(pathname);
@@ -15,7 +16,7 @@ const NavMenu = () => {
         {id:5, title:'Trash', icon: TrashIcon, link: "/trash"},
     ]
     return (
-        <div className='flex flex-col p-2 h-[100vh] border-r-2'>
+        <div className='flex flex-col p-2 h-[100vh] border-r-2 w-[25%]'>
             <div className='w-full flex justify-center items-center'>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +63,7 @@ const NavMenu = () => {
                 </svg>
             </div>
             <div className='my-10 flex justify-center items-center'>
-                <button className='bg-sky-500 text-white px-5 py-1 font-bold'>+ Add New Note</button>
+               <Link href={"/create"}><button className='bg-sky-500 text-white px-5 py-1 font-bold'>+ Add New Note</button></Link> 
             </div>
 
             {

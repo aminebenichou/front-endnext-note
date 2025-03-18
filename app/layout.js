@@ -40,7 +40,7 @@ export default function RootLayout({ children }) {
 
         <Search  />
         </div>
-        <div className="flex">
+        <div className="flex w-[100%]">
         <NavMenu />
         {children}
         </div>
