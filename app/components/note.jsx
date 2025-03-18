@@ -1,8 +1,12 @@
 import { HeartIcon } from "lucide-react";
-import { getAllNotes } from "../requests";
+import { EditNote, getAllNotes } from "../requests";
 
-export default function NoteCard({note}) {
-    
+export default function NoteCard({ note }) {
+    function like() {
+        console.log(note.id)
+        EditNote(note.id, { favorite: true })
+    }
+
     return (
         <div className="flex flex-col justify-between m-2 border shadow-md p-3 h-52 hover:shadow-xl">
             <div>
@@ -17,14 +21,18 @@ export default function NoteCard({note}) {
             </div>
             <div className="flex justify-between items-center h-5">
                 <div className="flex justify-evenly items-center">
-                    <span className="mr-2 p-2 hover:cursor-pointer">
-                        { 
-                            note.favorite ?
-                                <HeartIcon size={16} fill="red" /> 
-                            : 
-                            <HeartIcon size={16} fill="white" /> 
-                        }
-                    </span>
+                    <button onClick={() => {
+                        like()
+                    }}>
+                        <span className="mr-2 p-2 hover:cursor-pointer">
+                            {
+                                note.favorite ?
+                                    <HeartIcon size={16} fill="red" />
+                                    :
+                                    <HeartIcon size={16} fill="white" />
+                            }
+                        </span>
+                    </button>
                     <span className="mx-2 p-2 hover:cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 24 24"><path fill="none" stroke="#bebcbc" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11h3m0 0h3m-3 0v3m0-3V8m-3 11v-1.25c0-2.071-1.919-3.75-4.286-3.75H7.286C4.919 14 3 15.679 3 17.75V19m9-11a3 3 0 1 1-6 0a3 3 0 0 1 6 0"></path></svg>
                     </span>
@@ -34,10 +42,10 @@ export default function NoteCard({note}) {
                 </div>
                 <div className="flex justify-between items-center">
                     <span className="mx-2 p-2 hover:cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 512 512"><path fill="none" stroke="#bebcbc" strokeLinecap="round" strokeLinejoin="round" strokeWidth={32} d="M80 152v256a40.12 40.12 0 0 0 40 40h272a40.12 40.12 0 0 0 40-40V152"></path><rect width={416} height={80} x={48} y={64} fill="none" stroke="#bebcbc" strokeLinejoin="round" strokeWidth={32} rx={28} ry={28}></rect><path fill="none" stroke="#bebcbc" strokeLinecap="round" strokeLinejoin="round" strokeWidth={32} d="m320 304l-64 64l-64-64m64 41.89V224"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 512 512"><path fill="none" stroke="#bebcbc" strokeLinecap="round" strokeLinejoin="round" strokeWidth={32} d="M80 152v256a40.12 40.12 0 0 0 40 40h272a40.12 40.12 0 0 0 40-40V152"></path><rect width={416} height={80} x={48} y={64} fill="none" stroke="#bebcbc" strokeLinejoin="round" strokeWidth={32} rx={28} ry={28}></rect><path fill="none" stroke="#bebcbc" strokeLinecap="round" strokeLinejoin="round" strokeWidth={32} d="m320 304l-64 64l-64-64m64 41.89V224"></path></svg>
                     </span>
                     <span className="ml-2 p-2 hover:cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 24 24"><path fill="none" stroke="#bebcbc" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.687 6.213L6.8 18.976a2.5 2.5 0 0 0 2.466 2.092h3.348m6.698-14.855L17.2 18.976a2.5 2.5 0 0 1-2.466 2.092h-3.348m-1.364-9.952v5.049m3.956-5.049v5.049M2.75 6.213h18.5m-6.473 0v-1.78a1.5 1.5 0 0 0-1.5-1.5h-2.554a1.5 1.5 0 0 0-1.5 1.5v1.78z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 24 24"><path fill="none" stroke="#bebcbc" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.687 6.213L6.8 18.976a2.5 2.5 0 0 0 2.466 2.092h3.348m6.698-14.855L17.2 18.976a2.5 2.5 0 0 1-2.466 2.092h-3.348m-1.364-9.952v5.049m3.956-5.049v5.049M2.75 6.213h18.5m-6.473 0v-1.78a1.5 1.5 0 0 0-1.5-1.5h-2.554a1.5 1.5 0 0 0-1.5 1.5v1.78z"></path></svg>
                     </span>
 
                 </div>

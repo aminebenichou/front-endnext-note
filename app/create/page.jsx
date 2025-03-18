@@ -7,7 +7,7 @@ const CreateNote = () => {
     title: '',
     content: ''
   })
-//   const [submitted, setSubmitted] = useState(false)
+  
   const submitNote = ()=>{
     console.log(note)
     createNote(note)
