@@ -1,10 +1,11 @@
 import { HeartIcon } from "lucide-react";
 import { EditNote, getAllNotes } from "../requests";
 
-export default function NoteCard({ note }) {
-    function like() {
+export default function NoteCard({ note, refresh }) {
+    function like(status) {
         console.log(note.id)
-        EditNote(note.id, { favorite: true })
+        EditNote(note.id, { favorite: status })
+        refresh(true)
     }
 
     return (
@@ -22,7 +23,7 @@ export default function NoteCard({ note }) {
             <div className="flex justify-between items-center h-5">
                 <div className="flex justify-evenly items-center">
                     <button onClick={() => {
-                        like()
+                        note.favorite ? like(false) : like(true)
                     }}>
                         <span className="mr-2 p-2 hover:cursor-pointer">
                             {

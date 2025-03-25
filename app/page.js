@@ -7,11 +7,12 @@ import { getAllNotes } from "./requests";
 export default function Home() {
 
   const [notes, setNotes] = useState([])
+  const [refresh, setRefresh] = useState(false)
   useEffect(()=>{
     getAllNotes().then((data)=>{
       setNotes(data)
     })
-  }, [])
+  }, [refresh])
   
   const [sortedNotes, setSortedNotes] = useState(notes)
   
@@ -27,7 +28,9 @@ export default function Home() {
       <div className="flex flex-wrap">
       {
         notes.map((note)=>(
-          <NoteCard note={note} key={note.id} />
+          <NoteCard note={note} key={note.id} refresh={(data)=>{
+            setRefresh(!refresh)
+          }} />
         ))
       }
 
